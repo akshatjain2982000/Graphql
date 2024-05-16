@@ -9,7 +9,10 @@ pipeline {
         }
         stage('sonar') {
             steps {withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') {
-    	            bat 'mvn sonar:sonar -Dsonar.projectName=graphql -Dsonar.sources=api-gateway_api-gateway/'
+    	            bat '''
+		    cd C:\Users\akshatjain04\Downloads\graphql\graphql\graphql
+		    mvn sonar:sonar -Dsonar.projectName=graphql -Dsonar.sources=src/main
+		    '''
 	            }
             }
         }
