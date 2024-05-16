@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                git branch: 'main', credentialsId: 'akshatjain04', url: 'https://github.com/akshatjain2982000/Graphql.git/api-gateway_api-gateway'
+                git branch: 'main', credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', url: 'https://github.com/akshatjain2982000/Graphql.git'
             }
         }
     }
