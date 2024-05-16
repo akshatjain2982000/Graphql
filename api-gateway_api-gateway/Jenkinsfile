@@ -7,6 +7,11 @@ pipeline {
                 git branch: 'main', credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', url: 'https://github.com/akshatjain2982000/Graphql.git'
             }
         }
+	stage('list') {
+            steps {
+    	            bat 'ls'
+	            }
+            }
         stage('sonar') {
             steps {withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') {
     	            bat 'mvn sonar:sonar -Dsonar.projectName=graphql -Dsonar.sources=.'
