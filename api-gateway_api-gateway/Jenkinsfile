@@ -1,1 +1,11 @@
-checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', name: 'origin', refspec: '+refs/heads/master:refs/remotes/origin/main', url: 'https://github.com/akshatjain2982000/Graphql.git']])
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', name: 'origin', refspec: '+refs/heads/master:refs/remotes/origin/main', url: 'https://github.com/akshatjain2982000/Graphql.git']])
+            }
+        }
+    }
+}
