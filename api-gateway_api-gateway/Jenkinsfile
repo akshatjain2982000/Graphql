@@ -4,7 +4,16 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', name: 'origin', refspec: '+refs/heads/master:refs/remotes/origin/main', url: 'https://github.com/akshatjain2982000/Graphql.git']])
+                git branch: 'main', credentialsId: 'a9fe0e32-ddaf-4bdb-ad1a-363fbc723b79', url: 'https://github.com/akshatjain2982000/Graphql.git'
+            }
+        }
+        stage('sonar') {
+            steps {withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') {
+    	            bat '''
+		    cd C:/Users/akshatjain04/Downloads/graphql/graphql/graphql
+		    mvn sonar:sonar -Dsonar.projectName=graphql -Dsonar.sources=src/main
+		    '''
+	            }
             }
         }
     }
